@@ -15,22 +15,65 @@
   <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body class="bg-light">
-  <!-- Conteúdo central -->
-  <main class="container d-flex align-items-center justify-content-center full-center">
+  <!-- ====== Filtro SVG (gooey) ====== -->
+  <svg width="0" height="0" style="position:absolute">
+    <defs>
+      <filter id="gooey">
+        <!-- blur um pouco maior para reforçar conexão entre blobs -->
+        <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
+        <feColorMatrix in="blur" mode="matrix" values="
+          1 0 0 0 0
+          0 1 0 0 0
+          0 0 1 0 0
+          0 0 0 26 -14" result="goo"/>
+        <feBlend in="SourceGraphic" in2="goo"/>
+      </filter>
+    </defs>
+  </svg>
+
+  <!-- ====== Palco da lava: camada GOOEY + camada 3D sincronizadas ====== -->
+  <div class="lava-stage" aria-hidden="true">
+    <!-- Camada de fusão (gooey) -->
+    <div class="lava-goo">
+      <span class="blob b1"></span>
+      <span class="blob b2"></span>
+      <span class="blob b3"></span>
+      <span class="blob b4"></span>
+      <span class="blob b5"></span>
+      <span class="blob b6"></span>
+      <span class="blob b7"></span>
+      <span class="blob b8"></span>
+      <span class="blob b9"></span>
+      <span class="blob b10"></span>
+      <span class="blob b11"></span>
+      <span class="blob b12"></span>
+    </div>
+    <!-- Camada 3D (sombras, brilho suave e reflexo) -->
+    <div class="lava-3d">
+      <span class="blob3d b1"></span>
+      <span class="blob3d b2"></span>
+      <span class="blob3d b3"></span>
+      <span class="blob3d b4"></span>
+      <span class="blob3d b5"></span>
+      <span class="blob3d b6"></span>
+      <span class="blob3d b7"></span>
+      <span class="blob3d b8"></span>
+      <span class="blob3d b9"></span>
+      <span class="blob3d b10"></span>
+      <span class="blob3d b11"></span>
+      <span class="blob3d b12"></span>
+    </div>
+  </div>
+
+  <!-- ====== Conteúdo central ====== -->
+  <main class="container d-flex align-items-center justify-content-center full-center site-content">
     <div class="row justify-content-center w-100">
       <div class="col-12 col-lg-8">
         <!-- Cartão principal -->
         <section class="text-center p-4 p-md-5 mb-4 section-card">
-          <!-- Foto -->
-          <img
-            src="imgs/perfil.jpeg"
-            alt="Foto de perfil"
-            class="avatar mb-3"
-          >
-          <!-- Nome -->
+          <img src="imgs/perfil.jpeg" alt="Foto de perfil" class="avatar mb-3">
           <h1 class="h2 name-title mb-3">Luan S. R. Custódio</h1>
 
-          <!-- Logos das linguagens -->
           <div class="tech-logos d-flex align-items-center justify-content-center flex-wrap mb-2">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/61/HTML5_logo_and_wordmark.svg/1024px-HTML5_logo_and_wordmark.svg.png" alt="HTML" title="HTML">
             <img src="https://upload.wikimedia.org/wikipedia/commons/6/62/CSS3_logo.svg" alt="CSS" title="CSS">
@@ -65,7 +108,6 @@
           </ul>
         </section>
 
-        <!-- CTA secundário -->
         <div class="d-flex justify-content-center gap-2">
           <a class="btn btn-outline-primary" href="projetos.html">Ver Projetos</a>
           <a class="btn btn-primary" href="contato.html">Fale Comigo</a>
