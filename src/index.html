@@ -14,18 +14,18 @@
   >
   <link rel="stylesheet" href="styles/styles.css">
 </head>
-<body class="bg-light">
+<body class="bg-dark">
   <!-- ====== Filtro SVG (gooey) ====== -->
   <svg width="0" height="0" style="position:absolute">
     <defs>
+      <!-- Mantém a fusão dos blobs; leve ajuste no ganho para bordas mais limpas -->
       <filter id="gooey">
-        <!-- blur um pouco maior para reforçar conexão entre blobs -->
         <feGaussianBlur in="SourceGraphic" stdDeviation="14" result="blur"/>
         <feColorMatrix in="blur" mode="matrix" values="
           1 0 0 0 0
           0 1 0 0 0
           0 0 1 0 0
-          0 0 0 26 -14" result="goo"/>
+          0 0 0 24 -13" result="goo"/>
         <feBlend in="SourceGraphic" in2="goo"/>
       </filter>
     </defs>
@@ -48,7 +48,7 @@
       <span class="blob b11"></span>
       <span class="blob b12"></span>
     </div>
-    <!-- Camada 3D (sombras, brilho suave e reflexo) -->
+    <!-- Camada 3D (shading + halo/neon) -->
     <div class="lava-3d">
       <span class="blob3d b1"></span>
       <span class="blob3d b2"></span>
